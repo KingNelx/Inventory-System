@@ -20,4 +20,22 @@ public class Inventory {
   public void removeOrders(Order ord) {
     ordList.remove(ord);
   }
+
+  public Product findProductByID(int prodID) {
+    for (Product product : prodList) {
+      if (product.getProductID() == prodID) {
+        return product;
+      }
+    }
+    return null;
+  }
+
+  public Order findOrderByID(int orderID) {
+    for (Order order : ordList) {
+      if (order.getOrderID() == orderID) {
+        return order;
+      }
+    }
+    return null;
+  }
 }
