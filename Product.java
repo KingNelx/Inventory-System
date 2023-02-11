@@ -19,6 +19,8 @@ public class Product {
   ) {
     setProductID(productID);
     setProductName(productName);
+    setProductPrice(productPrice);
+    setManufacturerName(manufacturerName);
   }
 
   public void setProductID(int productID) {
@@ -61,7 +63,7 @@ public class Product {
   }
 
 
-  public void setManufacturer (String manufacturerName) {
+  public void setManufacturerName (String manufacturerName) {
     if (manufacturerName == null) {
         throw new IllegalArgumentException(MSG_STRING_NULL);
     }if (manufacturerName.trim().equalsIgnoreCase(emptySpace) || manufacturerName.isEmpty()) {
