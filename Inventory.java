@@ -6,6 +6,7 @@ public class Inventory {
   private List<Product> product = new ArrayList<>();
   private List<Order> order = new ArrayList<>();
 
+
   public Inventory(Product prod, Order ord) {
     addProduct(prod);
     addOrder(ord);
@@ -20,7 +21,7 @@ public class Inventory {
     " Order not found exception ";
 
   public void addProduct(Product prod) {
-    if (product.isEmpty() || product == null) {
+    if (prod == null || !(prod instanceof Product)) {
       throw new IllegalArgumentException(MSG_PRODUCT_EMPTY);
     } else {
       product.add(prod);
@@ -28,7 +29,7 @@ public class Inventory {
   }
 
   public void addOrder(Order ord) {
-    if (order.isEmpty() || product == null) {
+    if (ord == null || !(ord instanceof Order)) {
       throw new IllegalArgumentException(MSG_ORDER_EMPTY);
     } else {
       order.add(ord);
@@ -58,6 +59,19 @@ public class Inventory {
       }
     }
     throw new IllegalArgumentException(MSG_ORDER_NOT_FOUND);
+  }
+
+  public String printOrders(Product prod) {
+    return (
+      " Product ID: " +
+      prod.getProductID() +
+      "\n Product Name: " +
+      prod.getProductName() +
+      "\n Product Price: " +
+      prod.getProductPrice() +
+      "\n Manufacturer: " +
+      prod.getManufacturerName()
+    );
   }
 }
 /*
