@@ -6,6 +6,11 @@ public class Inventory {
   private List<Product> product = new ArrayList<>();
   private List<Order> order = new ArrayList<>();
 
+  public Inventory(Product prod, Order ord) {
+    addProduct(prod);
+    addOrder(ord);
+  }
+
   private static final String MSG_PRODUCT_EMPTY = " Product List is Empty ";
   private static final String MSG_ORDER_EMPTY = " Order List is Empty ";
   private static final String MSG_NEGATIVE_NUM = " Negative number detected ";
