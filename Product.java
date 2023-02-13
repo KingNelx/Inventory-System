@@ -1,50 +1,85 @@
 public class Product {
-    private int productID;
-    private String productName;
-    private String shipFrom;
-    private double price;
 
+  private int productID;
+  private String productName;
+  private String shipFrom;
+  private double price;
 
-    private static final String emptyString = " ";
-    private static final String MSG_STRING_EMPTY = " Empty String Detected ";
-    private static final String MSG_NEGATIVE_DETECTED = " Negative Number Detected ";
-    private static final String MSG_STRING_NULL = " Null Detected ";
+  private static final String emptyString = " ";
+  private static final String MSG_STRING_EMPTY = " Empty String Detected ";
+  private static final String MSG_NEGATIVE_DETECTED =
+    " Negative Number Detected ";
+  private static final String MSG_STRING_NULL = " Null Detected ";
 
-    public Product (int productID, String productName, String shipFrom, double price) {
+  public Product(
+    int productID,
+    String productName,
+    String shipFrom,
+    double price
+  ) {
+    setProductID(productID);
+    setProductName(productName);
+    setShipFrom(shipFrom);
+    setProductPrice(price);
+  }
 
+  public boolean isSameProduct(Product other) {
+    return this.productID == other.productID;
+  }
+
+  public double totalProductCost(int quantity) {
+    return this.price * quantity;
+  }
+
+  public void setProductID(int productID) {
+    if (!(productID < 0)) {
+      this.productID = productID;
     }
+    throw new IllegalArgumentException(MSG_NEGATIVE_DETECTED);
+  }
 
-    public void setProductID () {
+  public int getProductID() {
+    return productID;
+  }
 
+  public void setProductName(String productName) {
+    if (productName == null) {
+      throw new IllegalArgumentException(MSG_STRING_NULL);
+    } else if (
+      productName.trim().isEmpty() || productName.equalsIgnoreCase(emptyString)
+    ) {
+      throw new IllegalArgumentException(MSG_STRING_EMPTY);
     }
+    this.productName = productName;
+  }
 
-    public int getProductID () {
+  public String getProductName() {
+    return productName;
+  }
 
+  public void setShipFrom(String shipFrom) {
+    if (shipFrom == null) {
+      throw new IllegalArgumentException(MSG_STRING_NULL);
+    } else if (
+      shipFrom.trim().isEmpty() || shipFrom.equalsIgnoreCase(emptyString)
+    ) {
+      throw new IllegalArgumentException(MSG_STRING_EMPTY);
     }
+    this.shipFrom = shipFrom;
+  }
 
+  public String getShipFrom() {
+    return shipFrom;
+  }
 
-    public void setProductName () {
-
+  public void setProductPrice(double price) {
+    if (price < 0) {
+      throw new IllegalArgumentException(MSG_NEGATIVE_DETECTED);
     }
+    this.price = price;
+  }
 
-    public String getProductName () {
-
-    }
-
-    public void setShipFrom () {
-
-    }
-
-    public String getShipFrom () {
-
-    }
-
-    public void setProductPrice () {
-
-    }
-
-    public double getProductPrice () {
-
-    }
-    
+  public double getProductPrice() {
+    return price;
+  }
 }
