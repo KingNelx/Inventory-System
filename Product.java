@@ -1,9 +1,9 @@
-interface test {
+interface productPricing {
   public double totalProductCost(int quantity);
   public boolean isSameProduct(Product other);
 }
 
-public class Product implements test{
+public class Product implements productPricing{
 
   private int productID;
   private String productName;
