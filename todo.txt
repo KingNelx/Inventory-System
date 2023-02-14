@@ -1,0 +1,5 @@
+Todo.
+
+1. add total cost
+2. add method for comparing the product
+3. add method for searching specific product using ID and Product name

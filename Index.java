@@ -21,6 +21,7 @@ public class Index {
     Inventory inventory = new Inventory();
     inventory.addProduct(product);
     inventory.addProduct(product2);
+    inventory.removeProduct(product2);
     String res = inventory.showAllProducts();
     System.out.println(res);
   }
