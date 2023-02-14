@@ -46,6 +46,9 @@ public class Inventory {
 
   public String showAllProducts() {
     StringBuilder sb = new StringBuilder();
+    if(productList.isEmpty()){
+        throw new IllegalArgumentException(error.ERROR_MSG_PRODUCT_EMPTY());
+    }
     for (Product product : productList) {
         sb.append("\nProduct ID: ").append(product.getProductID())
           .append("\nProduct Name: ").append(product.getProductName())
