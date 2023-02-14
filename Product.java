@@ -1,6 +1,6 @@
 interface test {
   public double totalProductCost(int quantity);
-  // public boolean isSampeProcut(Product other);
+  public boolean isSameProduct(Product other);
 }
 
 public class Product implements test{
@@ -31,6 +31,11 @@ public class Product implements test{
   @Override
   public double totalProductCost(int quantity) {
     return this.price * quantity;
+  }
+
+  @Override
+  public boolean isSameProduct(Product sameProd) {
+    return this.productID == sameProd.getProductID();
   }
 
   public void setProductID(int productID) {
