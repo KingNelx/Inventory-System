@@ -1,4 +1,9 @@
-public class Product {
+interface test {
+  public double totalProductCost(int quantity);
+  // public boolean isSampeProcut(Product other);
+}
+
+public class Product implements test{
 
   private int productID;
   private String productName;
@@ -23,21 +28,17 @@ public class Product {
     setProductPrice(price);
   }
 
-  public boolean isSameProduct(Product other) {
-    return this.productID == other.productID;
-  }
-
+  @Override
   public double totalProductCost(int quantity) {
     return this.price * quantity;
   }
 
   public void setProductID(int productID) {
-    if (!(productID < 0)) {
-      this.productID = productID;
+    if (productID < 0) {
+      throw new IllegalArgumentException(MSG_NEGATIVE_DETECTED);
     }
-    throw new IllegalArgumentException(MSG_NEGATIVE_DETECTED);
+    this.productID = productID;
   }
-
   public int getProductID() {
     return productID;
   }
