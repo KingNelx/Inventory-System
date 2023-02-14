@@ -1,36 +1,61 @@
-import java.util.List;
 import java.util.ArrayList;
-
+import java.util.List;
 
 public class Inventory {
 
-    Errors error = new Errors();
+  Errors error = new Errors();
 
-    private List <Product> productList = new ArrayList<>();
+  private List<Product> productList = new ArrayList<>();
 
-    public Inventory(){
+  public Inventory() {}
 
+  public void addProduct(Product thisProduct) {
+    if (thisProduct instanceof Product) {
+      productList.add(thisProduct);
+    } else if (thisProduct == null) {
+      throw new IllegalArgumentException(error.ERROR_MSG_NULL());
+    } else {
+      throw new IllegalArgumentException(error.ERROR_MSG_FAILED_TO_ADD());
     }
+  }
 
-    public void addProduct(Product thisProduct){
-        if(thisProduct instanceof Product){
-            productList.add(thisProduct);
-        }else if(thisProduct == null){
-            throw new IllegalArgumentException(error.ERROR_MSG_NULL());
-        }else{
-            throw new IllegalArgumentException(error.ERROR_MSG_FAILED_TO_ADD());
-        }
+  public void removeProduct(Product thisProduct) {
+    if (thisProduct instanceof Product) {
+      productList.remove(thisProduct);
+    } else if (thisProduct == null) {
+      throw new IllegalArgumentException(error.ERROR_MSG_NULL());
+    } else {
+      throw new IllegalArgumentException(error.ERROR_MSG_FAILED_TO_REMOVE());
     }
+  }
 
-    public void removeProduct(Product thisProduct){
-        if(thisProduct instanceof Product){
-            productList.remove(thisProduct);
-        }else if(thisProduct == null){
-            throw new IllegalArgumentException(error.ERROR_MSG_NULL());
-        }else{
-            throw new IllegalArgumentException(error.ERROR_MSG_FAILED_TO_REMOVE());
-        }
+  public void updateProductByID(
+    Product product,
+    int productID,
+    String productName,
+    double price,
+    String description,
+    String supplier
+  ) {
+    product.setProductID(productID);
+    product.setProductName(productName);
+    product.setPrice(price);
+    product.setDescription(description);
+    product.setSupplier(supplier);
+  }
+
+  public String showAllProducts() {
+    StringBuilder sb = new StringBuilder();
+    for (Product product : productList) {
+        sb.append("\nProduct ID: ").append(product.getProductID())
+          .append("\nProduct Name: ").append(product.getProductName())
+          .append("\nProduct Price: ").append(product.getPrice())
+          .append("\nProduct Description: ").append(product.getProductDescription())
+          .append("\nProduct Supplier: ").append(product.getSupplier())
+          .append("\n");
     }
+    return sb.toString();
+}
 
 }
 /*

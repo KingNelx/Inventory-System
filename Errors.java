@@ -23,4 +23,7 @@ public class Errors {
   public String ERROR_MSG_FAILED_TO_REMOVE() {
     return " Attemp to REMOVE the Product FAILED ";
   }
+  public String ERROR_MSG_PRODUCT_EMPTY() {
+    return " Product List is Empty ";
+  }
 }
