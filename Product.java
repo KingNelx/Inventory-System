@@ -10,8 +10,13 @@ public class Product {
 
   Errors error = new Errors();
 
-  public Product() {
-    
+  public Product(int productID, String productName, int quantity, double price, String description, String supplier) {
+    setProductID(productID);
+    setProductName(productName);
+    setQuantity(quantity);
+    setPrice(price);
+    setDescription(description);
+    setSupplier(supplier);
   }
 
   public void setProductID(int productID) {
