@@ -1,6 +1,9 @@
+interface ProductCost {
+  double totalCost(int quantity);
+  boolean areProductsEqual(Product otherProduct);
+}
 
-
-public class Product {
+public class Product implements ProductCost {
 
   private int productID;
   private String productName;
@@ -12,7 +15,14 @@ public class Product {
 
   Errors error = new Errors();
 
-  public Product(int productID, String productName, int quantity, double price, String description, String supplier) {
+  public Product(
+    int productID,
+    String productName,
+    int quantity,
+    double price,
+    String description,
+    String supplier
+  ) {
     setProductID(productID);
     setProductName(productName);
     setQuantity(quantity);
@@ -20,6 +30,18 @@ public class Product {
     setDescription(description);
     setSupplier(supplier);
   }
+
+  @Override
+  public double totalCost(int quantity) {
+    return quantity * getPrice();
+  }
+
+  @Override
+  public boolean areProductsEqual(Product otherProduct) {
+    return getProductID() == otherProduct.getProductID();
+  }
+
+  
 
   public void setProductID(int productID) {
     if (productID < 0) {
@@ -84,16 +106,18 @@ public class Product {
     return productDescription;
   }
 
-  public void setSupplier(String supplier){
-    if(supplier == null){
-        throw new IllegalArgumentException(error.ERROR_MSG_NULL());
-    }else if(supplier.trim().equalsIgnoreCase(emptyString) || supplier.isEmpty()){
-        throw new IllegalArgumentException(error.ERROR_MSG_EMPTY_STRING());
-    }   
+  public void setSupplier(String supplier) {
+    if (supplier == null) {
+      throw new IllegalArgumentException(error.ERROR_MSG_NULL());
+    } else if (
+      supplier.trim().equalsIgnoreCase(emptyString) || supplier.isEmpty()
+    ) {
+      throw new IllegalArgumentException(error.ERROR_MSG_EMPTY_STRING());
+    }
     this.productSupplier = supplier;
   }
 
-  public String getSupplier(){
+  public String getSupplier() {
     return productSupplier;
   }
 }

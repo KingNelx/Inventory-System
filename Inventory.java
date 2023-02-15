@@ -1,13 +1,29 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Inventory {
+interface findDuality {
+  public void findyProductByID(Product otherProductID);
+}
+
+public class Inventory implements findDuality {
 
   Errors error = new Errors();
 
   private List<Product> productList = new ArrayList<>();
 
   public Inventory() {}
+
+  @Override
+  public void findyProductByID(Product otherProductID) {
+    if (otherProductID instanceof Product) {
+      throw new IllegalArgumentException(error.ERROR_OBJECT_NOT_FOUND());
+    }
+    for (Product prod : productList) {
+      if(prod.getProductID() == otherProductID.getProductID()) {
+        System.out.println(prod);
+      }
+    }
+  }
 
   public void addProduct(Product thisProduct) {
     if (thisProduct instanceof Product) {
@@ -46,20 +62,25 @@ public class Inventory {
 
   public String showAllProducts() {
     StringBuilder sb = new StringBuilder();
-    if(productList.isEmpty()){
-        throw new IllegalArgumentException(error.ERROR_MSG_PRODUCT_EMPTY());
+    if (productList.isEmpty()) {
+      throw new IllegalArgumentException(error.ERROR_MSG_PRODUCT_EMPTY());
     }
     for (Product product : productList) {
-        sb.append("\nProduct ID: ").append(product.getProductID())
-          .append("\nProduct Name: ").append(product.getProductName())
-          .append("\nProduct Price: ").append(product.getPrice())
-          .append("\nProduct Description: ").append(product.getProductDescription())
-          .append("\nProduct Supplier: ").append(product.getSupplier())
-          .append("\n");
+      sb
+        .append("\nProduct ID: ")
+        .append(product.getProductID())
+        .append("\nProduct Name: ")
+        .append(product.getProductName())
+        .append("\nProduct Price: ")
+        .append(product.getPrice())
+        .append("\nProduct Description: ")
+        .append(product.getProductDescription())
+        .append("\nProduct Supplier: ")
+        .append(product.getSupplier())
+        .append("\n");
     }
     return sb.toString();
-}
-
+  }
 }
 /*
  Create an Inventory class: This class will manage the list of products.

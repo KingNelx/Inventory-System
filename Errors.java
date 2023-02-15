@@ -26,4 +26,8 @@ public class Errors {
   public String ERROR_MSG_PRODUCT_EMPTY() {
     return " Product List is Empty ";
   }
+
+  public String ERROR_OBJECT_NOT_FOUND() {
+    return " Object Not Found ";
+  }
 }
