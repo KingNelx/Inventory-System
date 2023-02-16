@@ -22,10 +22,23 @@ public class Index {
     inventory.addProduct(product);
     inventory.addProduct(product2);
     String res = inventory.showAllProducts();
-    System.out.println(res);
 
-    System.out.println(" Is product the same: " + product.areProductsEqual(product2));
-    System.out.println(" Total Cost is: " + product.totalCost(product.getQuantity()));
-    
+    inventory.updateProductByID(
+      product,
+      1,
+      "Gaming Ultimate Keyboard",
+      900,
+      "GAMING RGB ULTI KEYBOARD",
+      "CHINA"
+    );
+    System.out.println(res);
   }
+  /*
+   *  Product product,
+    int productID,
+    String productName,
+    double price,
+    String description,
+    String supplier
+   */
 }
